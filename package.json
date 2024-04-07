@@ -1,0 +1,96 @@
+{
+  "name": "tightrope",
+  "displayName": "tightrope",
+  "description": "Tightrope is an end-to-end (e2e) encrypted code sharing extension for Visual Studio Code (VSCode) designed to enhance collaborative coding experiences securely.",
+  "publisher": "slackline",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "Tightrope",
+        "properties": {
+          "tightrope.username": {
+            "type": "string",
+            "default": "",
+            "description": "Username for Tightrope sessions"
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "tightrope.createSession",
+        "title": "Tightrope: Create Session"
+      },
+      {
+        "command": "tightrope.joinSession",
+        "title": "Tightrope: Join Session"
+      },
+      {
+        "command": "tightrope.sendMessage",
+        "title": "Tightrope: Send Packet"
+      },
+      {
+        "command": "tightrope.disconnect",
+        "title": "Tightrope: Disconnect"
+      },
+      {
+        "command": "tightrope.openFile",
+        "title": "Tightrope: Open File",
+        "category": "Tightrope"
+      }
+    ],
+    "viewsWelcome": [
+      {
+        "view": "tightropeTreeView",
+        "contents": "Welcome to Tightrope!\nYour secure code sharing extension for VSCode.\n\nGet started by creating or joining a Tightrope session to collaborate with peers.\n[Create Tightrope Session](command:tightrope.createSession)\n[Join Tightrope Session](command:tightrope.joinSession)\nFor more information on how to maximize your Tightrope experience, [read our documentation](https://chabber.top:3000/Tools/tightrope)."
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "tightropeViewContainer",
+          "title": "Tightrope",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "tightropeViewContainer": [
+        {
+          "id": "tightropeTreeView",
+          "name": "Information"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.86.0",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "ignore": "^5.3.1",
+    "node-pre-gyp": "^0.17.0",
+    "pako": "^2.1.0",
+    "wrtc": "^0.4.7",
+    "ws": "^8.16.0"
+  }
+}
